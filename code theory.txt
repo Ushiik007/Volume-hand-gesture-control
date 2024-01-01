@@ -1,0 +1,46 @@
+import cv2: This imports the OpenCV library, which is a computer vision and machine learning software library.
+
+import time: This imports the time module, which provides various time-related functions.
+
+import numpy as np: This imports the numpy library, which provides support for large, multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.
+
+import HandTrackingModule as htm: This imports a user-defined module HandTrackingModule, which contains functions and classes for hand detection and tracking using OpenCV.
+
+import math: This imports the math module, which provides mathematical functions.
+
+from ctypes import cast, POINTER: This imports the cast and POINTER functions from the ctypes module. These functions are used to cast Python objects to C data types.
+
+from comtypes import CLSCTX_ALL: This imports the CLSCTX_ALL constant from the comtypes module. This is used to specify the context for the Activate method.
+
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume: This imports two classes AudioUtilities and IAudioEndpointVolume from the pycaw.pycaw module. These classes are used to control the system volume.
+
+wCam, hCam = 640, 480: This line defines two variables wCam and hCam and sets their values to 640 and 480, respectively. These variables are used to specify the width and height of the video capture.
+
+cap = cv2.VideoCapture(0): This initializes a video capture object with the default camera (0) as the input source.
+
+cap.set(3, wCam): This sets the width of the video capture to wCam.
+
+cap.set(4, hCam): This sets the height of the video capture to hCam.
+
+pTime = 0: This initializes a variable pTime to zero, which is used to keep track of the previous time in the loop.
+
+detector = htm.handDetector(detectionCon=0, maxHands=1): This initializes an object detector of the handDetector class from the HandTrackingModule. This object is used to detect and track hands in the video stream.
+
+devices=AudioUtilities.GetSpeakers(): This retrieves the audio output device from the system using the GetSpeakers method.
+
+interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None): This activates the audio endpoint volume interface using the Activate method and the CLSCTX_ALL constant.
+
+volume = cast(interface, POINTER(IAudioEndpointVolume)): This casts the audio endpoint volume interface to a pointer using the cast function.
+
+volRange = volume.GetVolumeRange(): This retrieves the volume range of the audio output device using the GetVolumeRange method.
+
+minVol = volRange[0]: This sets the minimum volume level to the first element of the volRange tuple.
+
+maxVol = volRange[1]: This sets the maximum volume level to the second element of the volRange tuple.
+
+vol = 0: This initializes a variable vol to zero, which is used to keep track of the current volume level.
+
+volBar = 400: This initializes a variable volBar to 400, which is used to display the volume level
+
+
+
