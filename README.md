@@ -1,2 +1,3 @@
 # Volume-hand-gesture-control
-Through movement of fingers we can control volume of system
+Through Hand Gresture control the volume of system
+
